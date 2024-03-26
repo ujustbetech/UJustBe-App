@@ -1,0 +1,26 @@
+<div class="modalAlert">
+  <div class="header">Edit Email</div>
+  <section>
+    <form [formGroup]="formGroup">
+      <ion-list class="ujb_list">
+        <ion-item>
+          <ion-input (keyup)="changeErrorMessages('email')" [(ngModel)]="value" class="iconEmail"
+                     formControlName="EmailId" type="email"></ion-input>
+        </ion-item>
+      </ion-list>
+      <div *ngIf="formGroup.get('EmailId').hasError('required') && checkValidation"
+           class="validateError">Please enter
+        valid {{type}}
+      </div>
+      <div *ngIf="!result && checkValidation &&(!formGroup.get('EmailId').hasError('required'))"
+           class="validateError">
+        Please enter valid Email
+      </div>
+      <div *ngIf="isEmailExist " class="validateError">Email id is already registered</div>
+    </form>
+  </section>
+  <footer>
+    <button (click)="close()">Cancel</button>
+    <button (click)="checkEmail()">OK</button>
+  </footer>
+</div>

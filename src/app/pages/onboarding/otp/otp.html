@@ -1,0 +1,61 @@
+<ion-content [ngClass]="{'keypadFocused':pushNow==true}">
+  <ion-grid no-padding>
+    <ion-row>
+      <ion-col>
+        <img alt="" src="assets/imgs/content-imgs/otp@2x.png">
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="line-loader" hidden>
+        <div class="arrows">
+          <div class="loader"></div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <h3 text-center>OTP Verification</h3>
+  <p text-center>
+    Please enter the 4 digit code
+
+    <br> sent to {{countryCode}} {{morphedNumber}}
+  </p>
+  <div class="otp {{myClass1}}">
+    <ion-list class="ujb_list ujb_otp_block" id="otp_itemList">
+      <ion-item>
+        <ion-input #num1 (ionBlur)="removeSroll()"
+                   (ionFocus)="scrollTo(5000);" (keyup)="onKey1($event)" (onpaste)="onPaste($event)" [(ngModel)]="char1" id="num1"
+                   maxlength="1" type="tel" value="">{{char1}}
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input #num2 (ionBlur)="removeSroll()" (ionFocus)="scrollTo(5000);" (keyup)="onKey2($event)" [(ngModel)]="char2"
+                   id="num2" maxlength="1" type="tel" value="">{{char2}}
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input #num3 (ionBlur)="removeSroll()" (ionFocus)="scrollTo(5000);" (keyup)="onKey3($event)" [(ngModel)]="char3"
+                   id="num3" maxlength="1" type="tel" value="">{{char3}}
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input #num4 (ionBlur)="removeSroll()" (ionFocus)="scrollTo(5000);" (keyup)="onKey4($event)" [(ngModel)]="char4"
+                   id="num4" maxlength="1" type="tel" value="">{{char4}}
+        </ion-input>
+      </ion-item>
+
+    </ion-list>
+    <div class="otp_counter "><span hidden style="float: left">Auto verifying OTP</span> <span
+      hidden>00:{{timer}}</span></div>
+  </div>
+
+  <div class="margin" text-center>
+    <div *ngIf="!hideResend" class="otp_resentText" text-center>OTP has been resent to your Mobile
+      number
+    </div>
+    <div class="m-b-10 m-t-5" hidden text-center>Could not auto verify OTP. Please enter manually.
+    </div>
+    <div>
+      <span (click)="resendOTP(true)" *ngIf="hideResend" class="link-resend">Not received? Resend OTP!</span>
+    </div>
+  </div>
+</ion-content>

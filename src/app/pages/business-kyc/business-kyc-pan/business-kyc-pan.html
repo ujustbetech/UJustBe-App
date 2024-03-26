@@ -1,0 +1,96 @@
+<ion-header class="ujb_header ujbFrame_header">
+  <div class="statusBarPlaceholder" showWhen="ios"></div>
+  <ion-toolbar>
+    <ion-title>Business KYC</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding style="background: #a3c2e0;">
+  <div class="container layer-outer">
+    <div class="white-outer-div">
+      <form [formGroup]="businessKYCPan">
+        <div class="contentArea">
+          <h3>Upload your Company PAN Card details</h3>
+          <ion-list class="ujb_list" padding-horizontal>
+            <ion-item class="ujb_input_labelPlaceholder">
+              <ion-label position="floating">PAN Card Number</ion-label>
+              <ion-input [(ngModel)]="panNumber" class="capital" formControlName="panNo" maxlength="10"
+                         placeholder="10 Characters" tabindex="1" type="text"></ion-input>
+            </ion-item>
+            <div *ngIf="businessKYCPan.get('panNo').hasError('required') && checkValidation"
+                 class="validateError">Please
+              enter PAN card number.
+            </div>
+            <div *ngIf="businessKYCPan.get('panNo').hasError('pattern') && !businessKYCPan.get('panNo').hasError('required') && businessKYCPan.controls['panNo'].dirty"
+                 class="validateError">
+              Please enter valid PAN card number.
+            </div>
+          </ion-list>
+          <div class="uploaded_pan {{myClass}}">
+            <div class="pancard">
+              <img alt="" imageViewer src="{{panKyc.panImgBase64}}">
+            </div>
+            <div (click)="editphoto(1)" class="ujb_link {{myClass}}">
+                            <span class="inline-block">
+                        <img alt="" class="icon-edit" src="assets/imgs/icons/editCopy3@2x.png">
+                        Edit Photo
+                    </span>
+            </div>
+          </div>
+          <button (click)="editphoto(2)" class="ujb_btn_bordered_lg m-b-0 {{uploadClick}}">
+            <img alt="" class="icon-upload" src="assets/imgs/icons/uploadOptionCopy2@2x.png">
+            Upload PAN card Photo
+          </button>
+          <div *ngIf="isFileAbsent && checkValidation" class="validateError m-b-40 pad-lr-16">Please
+            upload PAN card photo.
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="layer-group">
+      <div class="layer-overlay" float-left>
+        <div class="layerSecond"></div>
+        <div class="layerLast"></div>
+      </div>
+    </div>
+  </div>
+  <div class="container slider-navigation ujbFrame_footer pl0 pr0" no-padding>
+    <div class="slider-button" float-left>
+      <div class="block w-full" float-left>
+        <div (click)="goBack()" class="navLeft" float-left>
+          <img alt="" class="img-icon" src="assets/imgs/icons/previous.png">
+          <span>Previous</span>
+        </div>
+        <button (click)="submitPan()" class="btn_invisible" float-right>
+          <div class="navRight">
+            <span>Next</span>
+            <img alt="" class="img-icon" src="assets/imgs/icons/next.png">
+          </div>
+        </button>
+      </div>
+      <div (click)="goToDashboad()" class="block w-full link-skip" float-left hidden text-center>
+        <span>skip for later</span>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<!-- <ion-footer>
+    <footer class="ujbFrame_footer">
+
+        <div class="block w-full" float-left>
+            <div class="navLeft" float-left (click)="goBack()">
+                <img class="img-icon" src="assets/imgs/icons/previous.png" alt="">
+                <span>Previous</span>
+            </div>
+            <button class="btn_invisible" float-right (click)="submitPan()">
+                <div class="navRight" >
+                    <span>Next</span>
+                    <img class="img-icon" src="assets/imgs/icons/next.png" alt="">
+                </div>
+            </button>
+        </div>
+        <div class="block w-full link-skip" hidden (click)="goToDashboad()" text-center float-left>
+            <span>skip for later</span>
+        </div>
+    </footer>
+</ion-footer> -->

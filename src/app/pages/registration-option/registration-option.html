@@ -1,0 +1,34 @@
+<ion-content>
+
+  <div class="{{logoCenter}}">
+    <img alt="UJustBe logo" src="assets/imgs/logo_with_slogan.png">
+  </div>
+  <div class="{{hideSocialLogin}}">
+    <div class="title">Sign up with</div>
+    <ul class="socialOptions">
+      <li><img (click)="googleAuth()" [src]="google_img" alt=""></li>
+      <li><img (click)="facebookAuth()" [src]="facebook_img" alt=""></li>
+      <li><img (click)="gotoComingSoon()" [src]="linkedin_img" alt=""></li>
+    </ul>
+    <div class="ujb_orHR">
+      <hr/>
+      <span>or</span>
+    </div>
+  </div>
+  <div class="{{addMargin}}">
+    <button (click)="gotToRegistrationMain()" class="ujb_btn_bordered_lg">New to UJustBe? Register
+    </button>
+    <button (click)="gotToSignin()" class="ujb_btn_bordered_lg">Sign in</button>
+  </div>
+  <div (click)="playVideo()" class="ujb_link">
+        <span class="inline-block">
+          Learn more
+          <img alt="" class="icon-play" src="assets/imgs/icons/play@2x.png">
+      </span>
+  </div>
+  <div class="txt_terms">
+    By signing up you accept the <span (click)="gotoTermsAndConditions()"
+                                       class="ujb_link inline-block">Terms and Conditions</span>
+  </div>
+
+</ion-content>

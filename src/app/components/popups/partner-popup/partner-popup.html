@@ -1,0 +1,31 @@
+<ion-header>
+  <img (click)="closeModal()" alt="" class="icon-close" float-right
+       src="assets/imgs/icons/close-black.png">
+</ion-header>
+<ion-content class="ujb_theme" text-center>
+  <div *ngIf="isClientPartner" class="popupContent">
+    <h2>Sign up as <br>Cosmonaut</h2>
+    <div class="imgContainer">
+      <img alt="" src="assets/imgs/content-imgs/clientPartner@2x.png">
+    </div>
+    <p>
+      Being a Cosmonaut at UJustBe helps your business to flourish
+      by providing an excellent platform to promote your products
+      and services, both locally and globally. It’s a simple way
+      to attract more business from anywhere in the world.
+    </p>
+    <button (click)="continueTobe()" class="ujb_btn_blue">Continue</button>
+  </div>
+  <div *ngIf="isPartner" class="popupContent" id="partner">
+    <h2>Sign up as <br>Orbiter</h2>
+    <div class="imgContainer">
+      <img alt="" src="assets/imgs/content-imgs/partnerpopup@2x.png">
+    </div>
+    <p>
+      Being a Orbiter at UJustBe opens up wonderful possibilities to connect with people,
+      earn effortlessly by passing referrals and to grow personally and professionally by
+      learning and sharing ideas in various UJustBe forums.
+    </p>
+    <button (click)="continueTobe()" class="ujb_btn_blue">Continue</button>
+  </div>
+</ion-content>

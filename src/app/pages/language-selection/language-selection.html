@@ -1,0 +1,34 @@
+<ion-header class="ujb_header">
+  <div class="statusBarPlaceholder" showWhen="ios"></div>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="logo">
+    <img alt="UJustBe logo" src="assets/imgs/logo_with_slogan.png">
+  </div>
+  <div class="title">Select Language</div>
+  <div class="block">
+    <button (click)="changeLang('English','1',true)" class="ujb_btn_bordered_sm" id="eng">English
+    </button>
+    <button (click)="changeLang('Hindi','2',true)" class="ujb_btn_bordered_sm" disabled id="hindi">
+      Hindi
+    </button>
+    <button (click)="changeLang('Marathi','3',true)" class="ujb_btn_bordered_sm" disabled id="mar">
+      Marathi
+    </button>
+    <button (click)="changeLang('Gujarati','4',true)" class="ujb_btn_bordered_sm" disabled id="guj">
+      Gujarati
+    </button>
+  </div>
+  <div (click)="playVideo()" class="ujb_link m-b-35">
+        <span class="inline-block">
+        Learn more
+        <img alt="" class="icon-play" src="assets/imgs/icons/play@2x.png">
+    </span>
+  </div>
+
+</ion-content>

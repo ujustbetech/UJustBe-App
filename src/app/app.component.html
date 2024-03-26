@@ -1,0 +1,39 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu (ionDidClose)="menuClosed()" class="ujb_theme" contentId="main-content" side="end"
+              swipeGesture="false" type="overlay">
+      <ion-content class="moreMenu">
+        <div class="menuWrapper">
+
+          <div class="menuBlock">
+            <div>
+              <button (click)="gotoInvitePeople()" class="ujb_btn_bordered_sm">
+                <img alt="" src="assets/imgs/icons/invite@2x.png">
+                Invite People
+              </button>
+            </div>
+            <ul class="ujb_menus">
+              <li (click)="goTochangeLanguage('changeLang')" menuClose>Change Language</li>
+              <li (click)="goTochangePassword()" menuClose>Change Password</li>
+              <li (click)="goToContactUs()" menuClose>Contact us</li>
+              <li (click)="goToAboutUs()" menuClose>About UJustBe</li>
+              <li (click)="playVideo()" class="learnMore" menuClose>Learn more <img
+                alt="" src="assets/imgs/icons/play@2x.png"></li>
+              <li (click)="showHide()" class="linkMore">More</li>
+            </ul>
+            <ul *ngIf="shouldShow" class="ujb_menus moreMenus">
+              <li (click)="openPage('logout')" menuClose>Logout</li>
+              <li (click)="goToPrivacyPolicy()" menuClose>Privacy Policy</li>
+            </ul>
+          </div>
+
+          <img alt="Menu" src="../assets/imgs/content-imgs/menu@2x.png">
+        </div>
+
+
+      </ion-content>
+    </ion-menu>
+
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

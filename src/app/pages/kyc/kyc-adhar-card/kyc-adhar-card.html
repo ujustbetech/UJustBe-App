@@ -1,0 +1,116 @@
+<ion-header class="ujb_header ujbFrame_header blue-bg">
+  <div class="statusBarPlaceholder" showWhen="ios"></div>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>KYC Documents</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content style="background: #a3c2e0;">
+  <div class="container layer-outer">
+    <div class="white-outer-div">
+      <form [formGroup]="KYCAdharForm">
+        <div class="contentArea">
+          <h3>Upload your Aadhar Card details</h3>
+          <ion-list class="ujb_list" padding-horizontal>
+            <ion-item class="ujb_input_labelPlaceholder">
+              <ion-label position="floating">Aadhar Card Number</ion-label>
+              <ion-input (ionChange)="AdharNumberSpace($event)" (keyup)="onKey($event)" [(ngModel)]="inputValue"
+                         formControlName="aadharNumber" maxlength="12" name="space"
+                         placeholder="12 Characters" tabindex="1"
+                         type="tel"></ion-input>
+            </ion-item>
+            <!-- <div class="validateError" *ngIf="KYCAdharForm.controls['aadharNumber'].dirty && KYCAdharForm.get('aadharNumber').hasError('minLength')">Adhar card number must be 12 digits.</div>
+            <div class="validateError" *ngIf="KYCAdharForm.controls['aadharNumber'].dirty && KYCAdharForm.get('aadharNumber').hasError('pattern')">Adhar card number invalid.</div> -->
+            <div *ngIf="!KYCAdharForm.controls['aadharNumber'].valid && !isNan && checkValidation"
+                 class="validateError">
+              Adhar card number must be 12 digits.
+            </div>
+            <div *ngIf="isNan && checkValidation" class="validateError">Please enter a valid Adhar
+              card number
+            </div>
+          </ion-list>
+          <div class="uploaded_adhar">
+            <div class=" {{myClass}}">
+              <div class="imgContainer">
+                <img [src]="aadharKyc.aadharFrontBase64" class="adharCard" imageViewer>
+              </div>
+              <div (click)="frontSideImg(1)" class="ujb_link {{myClass}}">
+                                <span class="inline-block ">
+                                    <img alt="" class="icon-edit"
+                                         src="assets/imgs/icons/editCopy3@2x.png">
+                                    Edit Photo
+                                </span>
+              </div>
+            </div>
+
+            <div class=" {{myClass1}}" size="6">
+              <div class="imgContainer">
+                <img class="adharCard" imageViewer src="{{aadharKyc.aadharBackBase64}}">
+              </div>
+              <div (click)="backSideImg(1)" class="ujb_link {{myClass1}} ">
+                                <span class="inline-block">
+                                    <img alt="" class="icon-edit"
+                                         src="assets/imgs/icons/editCopy3@2x.png">
+                                    Edit Photo
+                                </span>
+              </div>
+            </div>
+          </div>
+          <button (click)="frontSideImg(2)" class="ujb_btn_bordered_lg {{uploadClick}}">
+            <img alt="" class="icon-upload" src="assets/imgs/icons/uploadOptionCopy2@2x.png"> Upload
+            Aadhar card front
+          </button>
+
+          <button (click)="backSideImg(2)" class="ujb_btn_bordered_lg aadhar-back {{uploadClick1}}">
+            <img alt="" class="icon-upload" src="assets/imgs/icons/uploadOptionCopy2@2x.png"> Upload
+            Aadhar card back
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="layer-group">
+      <div class="layer-overlay" float-left>
+        <div class="layerSecond"></div>
+        <div class="layerLast"></div>
+      </div>
+    </div>
+  </div>
+  <div class="container slider-navigation ujbFrame_footer pl0 pr0" no-padding>
+    <div class="slider-button" float-left>
+      <div class="block w-full" float-left>
+        <div (click)="goBack()" class="navLeft" float-left>
+          <img alt="" class="img-icon" src="assets/imgs/icons/previous.png">
+          <span>Previous</span>
+        </div>
+        <div (click)="submitAadharDetails()" class="navRight" float-right>
+          <span>Next</span>
+          <img alt="" class="img-icon" src="assets/imgs/icons/next.png">
+        </div>
+      </div>
+      <div (click)="gotoDashboard()" class="block w-full link-skip" float-left text-center>
+        <span>skip for later</span>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<!-- <ion-footer>
+    <footer class="ujbFrame_footer">
+        <div class="block w-full" float-left>
+            <div class="navLeft" (click)="goBack()" float-left>
+                <img class="img-icon" src="assets/imgs/icons/previous.png" alt="">
+                <span>Previous</span>
+            </div>
+            <div class="navRight" float-right (click)="submitAadharDetails()">
+                <span>Next</span>
+                <img class="img-icon" src="assets/imgs/icons/next.png" alt="">
+            </div>
+        </div>
+        <div class="block w-full link-skip" (click)="gotoDashboard()" text-center float-left>
+            <span>skip for later</span>
+        </div>
+    </footer>
+</ion-footer> -->

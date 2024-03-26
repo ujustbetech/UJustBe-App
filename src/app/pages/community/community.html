@@ -1,0 +1,72 @@
+<ion-header class="ujb_header ujb_header_sm blue-bg">
+  <header [pageTitle]="pageTitle"></header>
+</ion-header>
+
+<ion-content>
+  <h2>Mentor</h2>
+  <ul class="memborList">
+    <li *ngFor="let userinfoobj of mentorUserInfo" class="member">
+      <ion-grid no-padding>
+        <ion-row>
+          <ion-col (click)="openProfile(userinfoobj)" class="col1" size="8">
+            <img alt=""
+                 class="photo"
+                 onerror="src='assets/imgs/icons/profilepic@2x.png'"
+                 src="{{userinfoobj.base64Image}}">
+            <h3 class="name">{{userinfoobj.firstName}} {{userinfoobj.lastName}} </h3>
+            <p class="profile">{{userinfoobj.role}}</p>
+            <p class="code">{{userinfoobj.myMentorCode}}</p>
+          </ion-col>
+
+          <ion-col class="col2" size="4">
+            <ul *ngFor="let userinfoobj of mentorUserInfo,let i =index" class="connects"
+                style="display: none">
+              <li (click)="openonApp()" class="m-r-15"><img
+                alt="" src="assets/imgs/icons/whatsapp-white.png"></li>
+              <li (click)="gotoKeypad(userinfoobj)">
+                <a class="inline-block" href="tel:{{userinfoobj.mobileNumber}}">
+                  <img alt="" class="icon_mobile" src="assets/imgs/icons/mobileCopy@2x.png">
+                </a>
+              </li>
+            </ul>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </li>
+  </ul>
+  <h2>Connects</h2>
+  <ul class="memborList">
+    <li *ngFor="let userinfoconnectobj of connectorUserInfo,let i =index" class="member">
+      <ion-grid no-padding>
+        <ion-row>
+          <ion-col (click)="openProfile(userinfoconnectobj)" class="col1" size="8">
+            <img alt=""
+                 class="photo"
+                 onerror="src='assets/imgs/icons/profilepic@2x.png'"
+                 src="{{userinfoconnectobj.base64Image}}">
+
+            <h3 class="name">{{userinfoconnectobj.firstName}} {{userinfoconnectobj.lastName}} </h3>
+            <p class="profile">{{userinfoconnectobj.role}}</p>
+            <p class="code">{{userinfoconnectobj.myMentorCode}}</p>
+          </ion-col>
+          <ion-col class="col2" size="4">
+            <ul class="connects">
+              <li (click)="openonApp(userinfoconnectobj)" class="m-r-15"><img
+                alt="" src="assets/imgs/icons/whatsapp-white.png"></li>
+              <li (click)="gotoKeypad(userinfoconnectobj)"><img alt=""
+                                                                class="icon_mobile"
+                                                                src="assets/imgs/icons/mobileCopy@2x.png"></li>
+            </ul>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </li>
+  </ul>
+  <div *ngIf="showNoConnectMessage==true" class="noData" text-center>{{noConnectMessage}}</div>
+</ion-content>
+<ion-footer>
+  <button (click)="gotoInvitePeople()" class="ujb_btn_bordered_sm {{margin}}" text-center>
+    <img alt="" class="icon_invite" src="assets/imgs/icons/inviteCopy@2x.png">
+    Invite People
+  </button>
+</ion-footer>

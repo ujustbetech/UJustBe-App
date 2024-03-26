@@ -1,0 +1,145 @@
+<ion-header class="ujb_header ujbFrame_header blue-bg">
+  <div class="statusBarPlaceholder" showWhen="ios"></div>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>KYC Documents</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- <ion-content class="scroll-disabled ujbFrameContent" [ngClass]="{'keypadFocused':pushNow==true}">
+    <div class="stackLayers ujbFrame_footerButton">
+        <div class="layerFront"> -->
+
+<ion-content style="background: #a3c2e0;">
+  <div class="container layer-outer">
+    <div class="white-outer-div">
+      <form [formGroup]="cancelChequeForm">
+        <div class="contentArea">
+          <div class="blockToPush">
+            <h3>Upload your Bank details</h3>
+            <div class="content-ht">
+              <ion-list class="ujb_list" padding-horizontal>
+                <ion-item class="ujb_input_labelPlaceholder m-t-0">
+                  <ion-label position="floating">Name of Account Holder</ion-label>
+                  <ion-input (ionBlur)="removeSroll()" (ionFocus)="scrollTo(5000);" [(ngModel)]="viewBankKycData.BankDetails.accountHolderName"
+                             class="capitalize"
+                             formControlName="accountHolderName"
+                             tabindex="1"
+                             type="text"></ion-input>
+                </ion-item>
+                <div *ngIf="cancelChequeForm.get('accountHolderName').hasError('pattern')"
+                     class="validateError">Please
+                  enter valid name.
+                </div>
+                <ion-item class="ujb_input_labelPlaceholder">
+                  <ion-label position="floating">Account Number</ion-label>
+                  <ion-input (ionBlur)="removeSroll()" (ionFocus)="scrollTo(5000);" (keyup)="onKey($event)"
+                             [(ngModel)]="viewBankKycData.BankDetails.accountNumber"
+                             formControlName="accountNum" maxLength="16"
+                             tabindex="1"
+                             type="tel"></ion-input>
+                </ion-item>
+                <div *ngIf="!cancelChequeForm.controls['accountNum'].valid" class="validateError">
+                  Please enter valid Account
+                  number
+                </div>
+                <!-- <div class="validateError" *ngIf=" isNan==true">Please enter valid Account number</div> -->
+
+                <!--refered following link for length validation https://latestbankupdate.blogspot.com/2016/02/digits-in-account-number-of-indian-banks.html-->
+                <ion-item class="ujb_input_labelPlaceholder">
+                  <ion-label position="floating">Bank Name</ion-label>
+                  <ion-input (ionBlur)="removeSroll()" (ionFocus)="scrollTo(5000);" [(ngModel)]="viewBankKycData.BankDetails.bankName"
+                             class="capitalize" formControlName="bankName"
+                             tabindex="1"
+                             type="text"></ion-input>
+                </ion-item>
+                <div *ngIf="cancelChequeForm.get('bankName').hasError('pattern')"
+                     class="validateError">Please enter valid
+                  bank name.
+                </div>
+                <ion-item class="ujb_input_labelPlaceholder">
+                  <ion-label position="floating">IFSC Code</ion-label>
+                  <ion-input (ionBlur)="removeSroll()" (ionFocus)="scrollTo(5000);" [(ngModel)]="viewBankKycData.BankDetails.IFSCCode"
+                             class="capital"
+                             formControlName="code" tabindex="1"
+                             type="text"></ion-input>
+                </ion-item>
+
+                <!-- <div class="validateError" *ngIf="!cancelChequeForm.controls['code'].valid && cancelChequeForm.controls['code'].dirty && !cancelChequeForm.get('code').hasError('required')">Please enter valid IFSC Code</div> -->
+                <div *ngIf="cancelChequeForm.get('code').hasError('pattern')" class="validateError">
+                  Please enter valid IFSC
+                  Code.
+                </div>
+              </ion-list>
+              <ion-grid no-padding>
+                <ion-row>
+                  <ion-col>
+                    <div class="uploaded_pan {{myClass}}">
+                      <div class="cancelledChecque">
+                        <img alt="" imageViewer
+                             src="{{kycCheque.BankDetails.cancelChequebase64Img}}">
+                      </div>
+
+                      <div (click)="editPhoto(1)" class="ujb_link {{myClass}}">
+                                            <span class="inline-block">
+                                                <img alt=""
+                                                     class="icon-edit"
+                                                     src="assets/imgs/icons/editCopy3@2x.png"> Edit Photo
+                                            </span>
+                      </div>
+                    </div>
+                    <button (click)="editPhoto(2)" class="ujb_btn_bordered_lg {{uploadClick}}">
+                      <img alt="" class="icon-upload"
+                           src="assets/imgs/icons/uploadOptionCopy2@2x.png"> Upload cancelled
+                      cheque
+                    </button>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="layer-group">
+      <div class="layer-overlay" float-left>
+        <div class="layerSecond"></div>
+        <div class="layerLast"></div>
+      </div>
+    </div>
+  </div>
+  <div class="container slider-navigation ujbFrame_footer pl0 pr0" no-padding>
+    <div class="slider-button" float-left>
+      <div class="block w-full pad-15 pad-t0" float-left>
+        <button (click)="submitChecqueDetail()" class="ujb_btn_blue">Submit</button>
+      </div>
+      <div class="block w-full" float-left>
+        <div (click)="goBack()" class="navLeft" float-left>
+          <img alt="" class="img-icon" src="assets/imgs/icons/previous.png">
+          <span>Previous</span>
+        </div>
+        <div (click)=" gotoDashboard()" class="navRight lineHeight_40" float-right>
+          <span>skip for later</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<!-- <ion-footer>
+    <footer class="ujbFrame_footer">
+        <div class="block w-full pad-15 pad-t0" float-left>
+            <button class="ujb_btn_blue" (click)="submitChecqueDetail()">Submit</button>
+        </div>
+        <div class="block w-full" float-left>
+            <div class="navLeft" float-left (click)="goBack()">
+                <img class="img-icon" src="assets/imgs/icons/previous.png" alt="">
+                <span>Previous</span>
+            </div>
+            <div class="navRight lineHeight_40" (click)=" gotoDashboard()" float-right>
+                <span>skip for later</span>
+            </div>
+        </div>
+    </footer>
+</ion-footer> -->

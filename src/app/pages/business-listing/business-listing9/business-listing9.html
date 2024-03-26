@@ -1,0 +1,52 @@
+<ion-header class="ujb_header ujbFrame_header blue-bg">
+  <div class="statusBarPlaceholder" showWhen="ios"></div>
+  <ion-toolbar>
+    <ion-title>Business Listing</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="scroll-disabled ujbFrameContent">
+  <div class="stackLayers ujbFrame_footerSkipLink">
+    <div class="layerFront">
+      <div class="contentArea">
+        <h3>Would you like to add</h3>
+        <div class="answer-section">
+          <div class="customBlock">
+            <button (click)="selectValue('products','1')" class="ujb_btn_bordered_sm" id="Products">
+              Products
+            </button>
+            <button (click)="selectValue('services','2')" class="ujb_btn_bordered_sm" id="Services">
+              Services
+            </button>
+            <button (click)="selectValue('both','3')" class="ujb_btn_bordered_sm" id="Both">Both
+            </button>
+            <div *ngIf="!isInputGiven && checkValidation" class="validateError">Please select
+              Value.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="layerSecond"></div>
+    <div class="layerLast"></div>
+  </div>
+</ion-content>
+<ion-footer>
+  <footer class="ujbFrame_footer">
+    <div class="block w-full" float-left>
+      <div (click)="goToBL8()" class="navLeft" float-left>
+        <img alt="" class="img-icon" src="assets/imgs/icons/previous.png">
+        <span>Previous</span>
+      </div>
+      <button (click)="goToBKycPan()" class="btn_invisible" float-right type="submit">
+        <div class="navRight">
+          <span>Next</span>
+          <img alt="" class="img-icon" src="assets/imgs/icons/next.png">
+        </div>
+      </button>
+    </div>
+    <div (click)="skip()" class="block w-full link-skip m-b-10" float-left text-center>
+      <span>skip for later</span>
+    </div>
+  </footer>
+</ion-footer>

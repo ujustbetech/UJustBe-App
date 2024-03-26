@@ -1,0 +1,21 @@
+<div class="modalAlert">
+  <div class="header"> {{title}}</div>
+  <section>
+    <form [formGroup]="formGroup">
+      <ion-list class="ujb_list">
+        <ion-item class="">
+          <!-- <div [formGroup]="formGroup" > -->
+          <ion-input formControlName="userId" hidden type=""></ion-input>
+          <ion-input (ionChange)="checkValidity()" formControlName="{{type}}" type="text"
+                     value="{{value}}"></ion-input>
+          <!-- </div> -->
+        </ion-item>
+      </ion-list>
+      <div *ngIf="!valid && checkValidation" class="validateError">Required field</div>
+    </form>
+  </section>
+  <footer>
+    <button (click)="close()">Cancel</button>
+    <button (click)="saveData()">OK</button>
+  </footer>
+</div>

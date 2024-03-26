@@ -1,0 +1,26 @@
+<div class="modalAlert">
+  <div class="header"> {{title}}</div>
+  <section>
+    <!-- <form [formGroup]="formGroup"> -->
+    <ion-list class="ujb_radioButtons radioGroup-inline">
+      <ion-radio-group [(ngModel)]="value" style="display: flex">
+        <ion-item>
+          <ion-label>Yes</ion-label>
+          <ion-radio (click)="selectValue()" slot="start" value='true'></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>No</ion-label>
+          <ion-radio (click)="selectValue()" slot="start" value='false'></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+
+    <div *ngIf="!isInputGiven && checkValidation" class="validateError">Required field</div>
+    <!-- </form> -->
+  </section>
+  <footer>
+    <button (click)="close()">Cancel</button>
+    <button (click)="saveData()">OK</button>
+  </footer>
+</div>

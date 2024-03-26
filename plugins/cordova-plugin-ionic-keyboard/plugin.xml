@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin id="cordova-plugin-ionic-keyboard" version="2.2.0"
+  xmlns="http://apache.org/cordova/ns/plugins/1.0">
+  <name>cordova-plugin-ionic-keyboard</name>
+  <description>Ionic Keyboard Plugin</description>
+  <license>Apache 2.0</license>
+  <keywords>cordova,keyboard,ecosystem:cordova,cordova-ios,cordova-android</keywords>
+  <repo>https://github.com/ionic-team/cordova-plugin-ionic-keyboard.git</repo>
+  <issue>https://github.com/ionic-team/cordova-plugin-ionic-keyboard/issues</issue>
+  <author>Apache Software Foundation</author>
+
+  <engines>
+    <engine name="cordova" version=">=3.2.0" />
+  </engines>
+
+  <!-- ios -->
+  <platform name="ios">
+
+    <js-module name="keyboard" src="www/ios/keyboard.js">
+      <clobbers target="window.Keyboard" />
+    </js-module>
+
+    <config-file parent="/*" target="config.xml">
+      <feature name="CDVIonicKeyboard">
+        <param name="ios-package" onload="true" value="CDVIonicKeyboard" />
+      </feature>
+    </config-file>
+
+    <header-file src="src/ios/CDVIonicKeyboard.h" />
+    <source-file src="src/ios/CDVIonicKeyboard.m" />
+  </platform>
+
+  <!-- android -->
+  <platform name="android">
+    <js-module name="keyboard" src="www/android/keyboard.js">
+      <clobbers target="window.Keyboard" />
+    </js-module>
+    <config-file parent="/*" target="config.xml">
+      <feature name="CDVIonicKeyboard">
+        <param name="android-package" onload="true" value="io.ionic.keyboard.CDVIonicKeyboard" />
+      </feature>
+    </config-file>
+
+    <source-file src="src/android/CDVIonicKeyboard.java" target-dir="src/io/ionic/keyboard" />
+  </platform>
+
+</plugin>

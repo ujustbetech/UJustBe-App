@@ -1,0 +1,43 @@
+<div class="modalAlert">
+  <div class="header">Edit Mobile Number</div>
+  <section>
+    <form [formGroup]="formGroup">
+      <ion-list class="ujb_list ujb_selectNinput ujb_withIcon">
+        <ion-item class="ujb_select width95">
+          <ion-select (ionChange)="changeErrorMessagesFirst()" [(ngModel)]="countryCode" class="countryCode"
+                      formControlName="CountryCode">
+            <ion-select-option *ngFor="let countryCodeObj of countries"
+                               [selected]="countryCode == countryCodeObj.code"
+                               value="{{countryCodeObj.code}}">({{countryCodeObj.code}})
+            </ion-select-option>
+
+          </ion-select>
+        </ion-item>
+        <ion-item [formGroup]="formGroup" class="ujb_input">
+          <ion-input (ionBlur)="checkMobile()" (keyup)="changeErrorMessages();" [(ngModel)]="value" formControlName="MobileNumber"
+                     maxLength="10" placeholder="" type="tel">
+          </ion-input>
+        </ion-item>
+      </ion-list>
+      <div *ngIf="formGroup.get('MobileNumber').hasError('required') && !userMobileExist && checkValidation"
+           class="validateError outSideList">
+        Mobile number is required
+      </div>
+
+      <div *ngIf="!formGroup.controls['MobileNumber'].valid && !validMobileNum && !userMobileExist && formGroup.controls['MobileNumber'].dirty && !formGroup.get('MobileNumber').hasError('required')"
+           class="validateError">
+        Mobile number must be 10 digits.
+      </div>
+
+      <div *ngIf="userMobileExist && !formGroup.controls.MobileNumber.errors?.valid "
+           class="validateError">Mobile number
+        is already registered
+      </div>
+      <div *ngIf="validMobileNum" class="validateError">Please enter valid mobile number</div>
+    </form>
+  </section>
+  <footer>
+    <button (click)="close()">Cancel</button>
+    <button (click)="saveData()">OK</button>
+  </footer>
+</div>
